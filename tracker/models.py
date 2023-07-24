@@ -1,10 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class Topic(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     class Meta:
         ordering = ["name"]
@@ -19,9 +20,12 @@ class Redactor(AbstractUser):
     class Meta:
         ordering = ["username"]
 
+    def get_absolute_url(self):
+        return reverse("tracker:redactor-detail", kwargs={"pk": self.pk})
+
 
 class Newspaper(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     content = models.TextField()
     publish_date = models.DateField()
     topic = models.ForeignKey(
