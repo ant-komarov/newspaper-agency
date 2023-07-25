@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
@@ -18,6 +20,14 @@ class NewspaperForm(forms.ModelForm):
     class Meta:
         model = Newspaper
         fields = "__all__"
+
+    def clean_publish_date(self):
+        publish_date = self.cleaned_data["publish_date"]
+
+        if publish_date > datetime.now().date():
+            raise forms.ValidationError("Newspaper can't be published in future!!!")
+
+        return publish_date
 
 
 class RedactorCreationForm(UserCreationForm):
@@ -58,7 +68,7 @@ class RedactorSearchForm(forms.Form):
 
 
 class NewspaperSearchForm(forms.Form):
-    model = forms.CharField(
+    title = forms.CharField(
         max_length=255,
         required=False,
         label="",
