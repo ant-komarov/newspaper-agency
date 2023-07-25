@@ -10,12 +10,14 @@
     </a>
   </h1>
   <p>Topic: ({{ newspaper.topic.name }})</p>
+  <p>Published: {{ newspaper.publish_date }}</p>
   <h1>Redactors</h1>
   <hr>
-  <ul>
+  <ul class="list-group list-group-flush">
     {% for redactor in newspaper.publishers.all %}
-      <li>{{ redactor.username }} ({{ redactor.first_name }} {{ redactor.last_name }})</li>
+      <li class="list-group-item">{{ redactor.username }} ({{ redactor.first_name }} {{ redactor.last_name }})</li>
     {% endfor %}
   </ul>
-  <p>Published: {{ newspaper.publish_date }}</p>
+  <hr>
+
 {% endblock %}
