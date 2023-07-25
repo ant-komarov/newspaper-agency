@@ -5,7 +5,7 @@
     <h1>
       Redactors List
       <a href="{% url "tracker:redactor-create" %}" class="btn btn-primary link-to-page">
-        Create
+        Create new
       </a>
     </h1>
 
@@ -15,7 +15,7 @@
   </form>
 
     {% if redactor_list %}
-    <table class="table">
+    <table class="table table-striped">
       <tr>
         <th>ID</th>
         <th>Username</th>
