@@ -15,18 +15,19 @@ from tracker.forms import (
 from tracker.models import Redactor, Newspaper, Topic
 
 
-def index(request):
-    num_redactors = Redactor.objects.count()
-    num_newspapers = Newspaper.objects.count()
-    num_topics = Topic.objects.count()
+class IndexView(generic.View):
+    def get(self, request):
+        num_redactors = Redactor.objects.count()
+        num_newspapers = Newspaper.objects.count()
+        num_topics = Topic.objects.count()
 
-    context = {
-        "num_redactors": num_redactors,
-        "num_newspapers": num_newspapers,
-        "num_topics": num_topics
-    }
+        context = {
+            "num_redactors": num_redactors,
+            "num_newspapers": num_newspapers,
+            "num_topics": num_topics
+        }
 
-    return render(request, "tracker/index.html", context=context)
+        return render(request, "tracker/index.html", context=context)
 
 
 class TopicListView(LoginRequiredMixin, generic.ListView):
@@ -96,7 +97,7 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
 
         if form.is_valid():
             return queryset.filter(
-                title__icontains=form.cleaned_data.get("title", "")
+                title__icontains=form.cleaned_data["title"]
             )
         return queryset
 
