@@ -13,14 +13,24 @@
   <div class="ml-3">
     <h4>Newspapers</h4>
 
-    {% for newspaper in redactor.newspapers.all %}
-        <hr>
-        <p><strong>Title:</strong> {{ newspaper.title }}</p>
-        <p><strong>Topic:</strong> {{ newspaper.topic.name }}</p>
-        <p><strong>Publish date:</strong> {{ newspaper.publish_date }} </p>
-        <p class="text-muted"><strong>Id:</strong> {{newspaper.id}}</p>
-    {% empty %}
-      <p>No newspapers!</p>
-    {% endfor %}
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Topic</th>
+        <th>Publish date</th>
+        <th>Id</th>
+      </tr>
+      {% for newspaper in redactor.newspapers.all %}
+        <tr>
+          <td>{{ newspaper.title }}</td>
+          <td>{{ newspaper.topic.name }}</td>
+          <td>{{ newspaper.publish_date }}</td>
+          <td>{{newspaper.id}}</td>
+        </tr>
+      {% empty %}
+        <p>No newspapers!</p>
+      {% endfor %}
+    </table>
+
   </div>
 {% endblock %}
