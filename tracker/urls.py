@@ -1,7 +1,6 @@
 from django.urls import path
 
 from tracker.views import (
-    index,
     TopicListView,
     TopicCreateView,
     TopicUpdateView,
@@ -16,10 +15,11 @@ from tracker.views import (
     RedactorCreateView,
     RedactorUpdateView,
     RedactorDeleteView,
+    IndexView,
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
     path(
         "topics/",
         TopicListView.as_view(),
