@@ -4,7 +4,11 @@ Django project for tracking and managing redactors, newspapers and topics
 
 ## Check it out!
 
-[Newspaper-agency project deployed on render](Link here)
+[Newspaper-agency project deployed on render](https://newspaper-agency-nzod.onrender.com/)
+
+To login add:
+username: john_doe
+password doe12345
 
 ## Installation
 
