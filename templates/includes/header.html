@@ -1,0 +1,20 @@
+<header class="bg-dark mb-0 text-white py-3 d-flex justify-content-between">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        Newspaper agency tracking system
+      </div>
+      <div class="col-md-5"></div>
+      <div class="col-md-3">
+        {% if user.is_authenticated %}
+          User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a> <a class="btn btn-secondary" href="{% url "logout"%}?next={{request.path}}">Logout</a>
+        {% else %}
+          <a class="btn btn-primary" href="{% url "login"%}?next={{request.path}}">Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+</header>
+

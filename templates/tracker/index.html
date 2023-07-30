@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Newspaper agency</title>
+
+{% endblock %}
+
+{% block content %}
+  <h2>Welcome to newspaper agency tracker system</h2>
+  <p>We are the part of history writing</p>
+  <h3>Now we have: </h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Redactors: {{ num_redactors }}</li>
+    <li class="list-group-item">Newspapers: {{ num_newspapers }}</li>
+    <li class="list-group-item">Topics: {{ num_topics }}</li>
+  </ul>
+
+{% endblock %}

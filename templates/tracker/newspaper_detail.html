@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>
+    {{ newspaper.title }}
+    <a href="{% url 'tracker:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+    <a href="{% url 'tracker:newspaper-update' pk=newspaper.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+  <p>Topic: ({{ newspaper.topic.name }})</p>
+  <p>Published: {{ newspaper.publish_date }}</p>
+  <h1>Redactors</h1>
+  <hr>
+  <ul class="list-group list-group-flush">
+    {% for redactor in newspaper.publishers.all %}
+      <li class="list-group-item">{{ redactor.username }} ({{ redactor.first_name }} {{ redactor.last_name }})</li>
+    {% endfor %}
+  </ul>
+  <hr>
+
+{% endblock %}
