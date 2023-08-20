@@ -20,6 +20,7 @@ cd newspaper-agency
 python3 -m venv venv # for Windows python -m venv venv
 source venv/bin/activate # for Windows Scripts\activate
 pip install -r requirements.txt
+# Create .env file from .env.sample and fill data
 python3 manage.py migrate
 python3 manage.py runserver # starts Django server
 ```
