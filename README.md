@@ -24,6 +24,9 @@ python3 manage.py migrate
 python3 manage.py runserver # starts Django server
 ```
 
+## DB structure
+![DB structure](readme_img/DB_structure.png)
+
 ## Features
 
 * Authentication functionality for Redactor/User
